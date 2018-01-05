@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile page</title>
+	<% include partials/head %>
+</head>
+<body>
+	<div class="container">
+		<header class="text-center">
+			<h1>Profile page</h1>
+			<a href="/logout" class="btn btn-light btn-sm">
+				Logout
+			</a>
+		</header>
+		<hr>
+		<div class="container">
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-body">
+						<h3 class="card-title">
+							<span class="fa fa-user"></span>Local
+						</h3>
+						<form action="/save" method="post"> 
+						<p>
+							<strong>id</strong>: <span><%= user._id %></span><br>
+							<strong>email</strong>: <span ><%= user.local.email %></span><br>
+							<strong>password</strong>: <span id="elemento"><%= user.local.password %></span>
+							<div class="form-group">
+								<input  style="display: none;" type="text" name="" class="form-control" id="newPass" placeholder="*********" />
+							</div>
+							<br>
+							<a id="ocultar" class="btn btn-light">Editar</a>
+							<a style="display: none;" id="cancelar" class="btn btn-red">Cancelar</a>
+							<button style="display: none;" id="save">Guardad</button>
+						</p>
+						<a href="/logout" class="btn btn-light">
+							Logout
+						</a>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#ocultar").click(function(){
+		$("#elemento").hide();
+		$("#newPass").show();
+		$("#cancelar").show();
+		$("#ocultar").hide();
+		$("#save").show();
+	});
+	$("#cancelar").click(function(){
+		$("#elemento").show();
+		$("#newPass").hide();
+		$("#ocultar").show();
+		$("#cancelar").hide();
+		$("#save").hide();
+	})
+});
+</script>
+</body>
+</html>
